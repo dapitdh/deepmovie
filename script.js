@@ -26,6 +26,8 @@ search.addEventListener('click', function(){
             movie.classList.add(`card`);
             movie.classList.add(`m-2`);
             movie.classList.add(`pt-2`);
+            movie.classList.add(`animate__animated`);
+            movie.classList.add(`animate__backInUp`);
             movie.style.width = `15rem`;
             movie.innerHTML = `
             <img src="${m.Poster}" class="card-img-top" alt="Movie Poster" style="object-fit: cover;">
