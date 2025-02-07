@@ -25,13 +25,14 @@ search.addEventListener('click', function(){
             const movie = document.createElement(`div`);
             movie.classList.add(`card`);
             movie.classList.add(`m-2`);
+            movie.classList.add(`pt-2`);
             movie.style.width = `15rem`;
             movie.innerHTML = `
-            <img src="${m.Poster}" class="card-img-top" alt="">
+            <img src="${m.Poster}" class="card-img-top" alt="Movie Poster" style="object-fit: cover;">
             <div class="card-body text-center">
                 <h5 class="card-title">${m.Title}</h5>
-                <p class="card-text">${m.Year}</p>
-                <p class="card-text">${m.Type}</p>
+                <p class="card-text"><small class="text-muted">${m.Year}</small></p>
+                <p class="card-text"><small class="text-muted">${m.Type}</small></p>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalFilm${m.imdbID}">Detail</button>
             </div>`;
             hasilCari.appendChild(movie);
@@ -67,7 +68,7 @@ search.addEventListener('click', function(){
                                         </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
