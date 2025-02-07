@@ -99,3 +99,26 @@ search.addEventListener('click', function() {
         }
     });
 });
+
+//Switch Theme
+const switchInput = document.querySelector('.switch .input');
+
+// Load saved theme from localStorage
+if (localStorage.getItem('theme') === 'gelap') {
+    document.body.classList.add('gelap');
+    switchInput.checked = true;
+} else {
+    document.body.classList.add('terang');
+}
+
+switchInput.addEventListener('change', function() {
+    document.body.classList.toggle('terang');
+    document.body.classList.toggle('gelap');
+    
+    // Save the current theme to localStorage
+    if (document.body.classList.contains('gelap')) {
+        localStorage.setItem('theme', 'gelap');
+    } else {
+        localStorage.setItem('theme', 'terang');
+    }
+});
