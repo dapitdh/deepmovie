@@ -13,7 +13,7 @@ search.addEventListener('click', function(){
     loadingImage.classList.add('loading-image');
     hasilCari.appendChild(loadingImage);
 
-    fetch(`http://www.omdbapi.com/?s=${input.value}&apikey=665ddef7`)
+    fetch(`https://www.omdbapi.com/?s=${input.value}&apikey=665ddef7`)
     .then(response => response.json())
     .then(response => {
         // Remove loading image
@@ -51,7 +51,7 @@ search.addEventListener('click', function(){
             hasilCari.appendChild(movie);
 
             //Detail
-            fetch(`http://www.omdbapi.com/?i=${m.imdbID}&apikey=665ddef7`)
+            fetch(`https://www.omdbapi.com/?i=${m.imdbID}&apikey=665ddef7`)
             .then(response => response.json())
             .then(detail => {
                 const info = document.createElement(`div`);
