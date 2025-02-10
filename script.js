@@ -73,11 +73,11 @@ search.addEventListener('click', function(){
                                         <img src="${detail.Poster}" class="img-fluid" alt="">
                                     </div>
                                     <div class="col-8">
-                                        <p class="fs-6">Released: ${detail.Released}</p>
-                                        <p class="fs-6">Genre: ${detail.Genre}</p>
-                                        <p class="fs-6">Director: ${detail.Director}</p>
-                                        <p class="fs-6">Actors: ${detail.Actors}</p>
-                                        <p class="fs-6">Plot: ${detail.Plot}</p>
+                                        <p class="fs-6"><span class="fw-bold">Released</span>: ${detail.Released}</p>
+                                        <p class="fs-6"><span class="fw-bold">Genre</span>: ${detail.Genre}</p>
+                                        <p class="fs-6"><span class="fw-bold">Director</span>: ${detail.Director}</p>
+                                        <p class="fs-6"><span class="fw-bold">Actors</span>: ${detail.Actors}</p>
+                                        <p class="fs-6"><span class="fw-bold">Plot</span>: ${detail.Plot}</p>
                                     </div>
                                 </div>
                             </div>
