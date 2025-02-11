@@ -48,26 +48,14 @@ function addMovie(movies,loadingImage){
     // If movie found
     movies.forEach(m => {
         const movie = document.createElement(`div`);
-        movie.classList.add(`card`);
-        movie.classList.add(`m-2`);
-        movie.classList.add(`pt-2`);
-        movie.classList.add(`animate__animated`);
-        movie.classList.add(`animate__backInUp`);
-        movie.style.width = `15rem`;
-        movie.innerHTML = `
-        <img src="${m.Poster}" class="card-img-top" alt="Movie Poster" style="object-fit: cover;">
-        <div class="card-body text-center">
-            <h5 class="card-title">${m.Title}</h5>
-            <p class="card-text"><small class="text-muted">${m.Year}</small></p>
-            <p class="card-text"><small class="text-muted">${m.Type}</small></p>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalFilm${m.imdbID}">Detail</button>
-        </div>`;
+        createMovieCard(m, movie);
         hasilCari.appendChild(movie);
 
         fetch(`https://www.omdbapi.com/?i=${m.imdbID}&apikey=665ddef7`)
         .then(response => response.json())
         .then(detail => {
-            const info = document.createElement(`div`);
+            if(detail.Response == "True"){
+                const info = document.createElement(`div`);
             info.classList.add(`modal`);
             info.classList.add(`fade`);
             info.classList.add(`col-12`);
@@ -101,11 +89,43 @@ function addMovie(movies,loadingImage){
                 </div>
             `;
             document.body.appendChild(info);
+            } else {
+                alert("Error, cant get movie detail!");
+            }
         })
         .catch(error => {
             console.log(error);
         });
     });
+}
+
+function createMovieCard(m, card) {
+    card.classList.add(`card`);
+    card.classList.add(`m-2`);
+    card.classList.add(`pt-2`);
+    card.classList.add(`animate__animated`);
+    card.classList.add(`animate__backInUp`);
+    card.style.width = `15rem`;
+    if(m.Poster == "N/A"){
+        card.innerHTML = `
+            <div class="card-img-top" style="object-fit: cover; height: 300px; width: 100%; background-color: #f8f9fa; text-align: center; line-height: 275px;">Image not available</div>
+            <div class="card-body text-center">
+                <h5 class="card-title">${m.Title}</h5>
+                <p class="card-text">${m.Year}</p>
+                <p class="card-text"><small class="text-muted">${m.Type.slice(0,1).toUpperCase() + m.Type.slice(1)}</small></p>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalFilm${m.imdbID}">Detail</button>
+            </div>
+        `;
+    } else {
+        card.innerHTML = `
+        <img src="${m.Poster}" class="card-img-top" alt="Movie Poster" style="object-fit: cover;">
+        <div class="card-body text-center">
+            <h5 class="card-title">${m.Title}</h5>
+            <p class="card-text"><small class="text-muted">${m.Year}</small></p>
+            <p class="card-text"><small class="text-muted">${m.Type.slice(0,1).toUpperCase() + m.Type.slice(1)}</small></p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalFilm${m.imdbID}">Detail</button>
+        </div>`;
+    }
 }
 
 //Switch Theme
